@@ -15,7 +15,7 @@ const Home = async () => {
           Lihat Semua
         </Link>
       </div>
-      <div className="grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-4 p-4">
+      <div className="grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-7 p-4">
         {anime.data.map((data) => {
           return (
             <div>
