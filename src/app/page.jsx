@@ -16,12 +16,12 @@ const Page = async () => {
         <Header
           title="Paling Populer"
           TitleLink="Show All"
-          HrefLink="/Populer"
+          HrefLink="/ppopuler"
         />
         <AnimeList api={topAnime} />
       </section>
       
-
+      
     </>
   );
 };
