@@ -27,7 +27,12 @@ const Pagination = ({ page, lastPage, setPage }) => {
 
   return (
     <div className="text-white text-2xl flex justify-center items-center gap-4 pb-8">
-      <button onClick={handlerFirst} className="hover:text-amber-500 transition-all text-xl">First Page</button>
+      <button
+        onClick={handlerFirst}
+        className="hover:text-amber-500 transition-all text-xl"
+      >
+        First Page
+      </button>
       <button
         onClick={handlerPrev}
         className="hover:text-amber-500 transition-all"
@@ -44,7 +49,12 @@ const Pagination = ({ page, lastPage, setPage }) => {
       >
         Next
       </button>
-      <button onClick={handlerLast} className="hover:text-amber-500 transition-all text-xl">Last Page</button>
+      <button
+        onClick={handlerLast}
+        className="hover:text-amber-500 transition-all text-xl"
+      >
+        Last Page
+      </button>
     </div>
   );
 };

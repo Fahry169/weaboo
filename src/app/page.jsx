@@ -3,12 +3,10 @@ import Header from "@/components/AnimeList/Header";
 import { getAnimeResponse } from "./service/api-service";
 
 const Page = async () => {
-
-  const topAnime = await getAnimeResponse("top/anime", "limit=10")
+  const topAnime = await getAnimeResponse("top/anime", "limit=10");
 
   return (
     <>
-
       {/* anime terpopuler */}
       <section>
         <Header
@@ -18,7 +16,6 @@ const Page = async () => {
         />
         <AnimeList api={topAnime} />
       </section>
-      
     </>
   );
 };
