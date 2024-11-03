@@ -18,11 +18,9 @@ const InputSearch = () => {
     }
   };
 
-  const handleInputUser = (e) => {
+  const handleInputChange = (e) => {
     const value = e.target.value;
-    const capitalizedValue = value
-      ? value.charAt(0).toUpperCase() + value.slice(1)
-      : "";
+    const capitalizedValue = value ? value.charAt(0).toUpperCase() + value.slice(1) : "";
     setInputValue(capitalizedValue);
   };
 
@@ -31,9 +29,10 @@ const InputSearch = () => {
       <input
         placeholder="Cari Anime...."
         className="placeholder:text-black p-1 cursor-pointer rounded md:w-64 w-full"
+        value={inputValue}
         ref={searchRef}
         onKeyDown={handleSearch}
-        onChange={handleInputUser}
+        onChange={handleInputChange}
       />
       <button className="absolute end-2 top-1" onClick={handleSearch}>
         <MagnifyingGlass size={22} />
