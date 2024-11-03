@@ -21,7 +21,7 @@ const AnimeList = ({ api }) => {
                     className="object-cover rounded"
                   />
                 </div>
-                <h3 className="text-sm font-medium mt-2">
+                <h3 className="text-sm font-medium mt-2 line-clamp-1">
                   {data.title_english || data.title}
                 </h3>
               </Link>
