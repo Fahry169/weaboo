@@ -8,6 +8,5 @@ export const getAnimeResponse = async (resource, query) => {
 
 export const getRandomAnime = async (resource, objectProperty) => {
   const res = await getAnimeResponse(resource)
-  return res.data.flatMap(item => item.entry)
+  return res.data.flatMap(item => item[objectProperty])
 }
- 
