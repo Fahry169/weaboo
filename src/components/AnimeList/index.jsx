@@ -9,7 +9,7 @@ const AnimeList = ({ api }) => {
           return (
             <div className="cursor-pointer hover:opacity-80">
               <Link
-                href={`/animeDetail/${data.mal_id}`}
+                href={`/anime/${data.mal_id}`}
                 className="text-color-1 hover:text-black transition-all"
               >
                 <div className="relative aspect-[3/4]">
