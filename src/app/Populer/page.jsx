@@ -17,7 +17,7 @@ const Page = () => {
 
   useEffect(() => {
     fetchData();
-  }, [page]);
+  }, []);
 
   return (
     <>

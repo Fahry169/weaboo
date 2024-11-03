@@ -7,7 +7,7 @@ const AnimeList = ({ api }) => {
       <div className="grid md:grid-cols-5 sm:grid-cols-3 grid-cols-2 gap-8 px-4 mb-8">
         {api.data?.map((data) => {
           return (
-            <div className="cursor-pointer hover:opacity-80">
+            <div className="cursor-pointer hover:brightness-75">
               <Link
                 href={`/anime/${data.mal_id}`}
                 className="text-color-1 hover:text-black transition-all"
