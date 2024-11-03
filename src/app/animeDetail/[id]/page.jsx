@@ -11,7 +11,7 @@ const Page = async ({ params: { id } }) => {
   return (
     <>
       <div className="max-w-[1100px] mx-auto">
-        <div className="text-3xl font-bold border-b-8 border-black py-5">
+        <div className="text-3xl font-bold border-b-8 border-navbar py-5">
           <h1>{anime.data?.title.english || anime.data?.title}</h1>
         </div>
         <div className="flex gap-10 py-5 md:flex-nowrap flex-wrap">
