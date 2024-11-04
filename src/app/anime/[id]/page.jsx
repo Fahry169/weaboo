@@ -1,4 +1,4 @@
-"use client";
+
 
 import { getAnimeResponse } from "@/service/api-service";
 import YoutubeVideo from "@/components/Utilities/YoutubeVideo";

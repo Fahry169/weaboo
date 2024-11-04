@@ -1,6 +1,4 @@
-"use client";
-
-import { Browsers, Star } from "@phosphor-icons/react";
+  import { Browsers, Star } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
 
