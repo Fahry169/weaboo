@@ -10,7 +10,7 @@ const Page = async ({ params }) => {
   return (
     <>
       <section>
-        <Header title={`Showing result of ${decodeURIComponent(keyword)}...`} />
+        <Header title={`SHOWING RESULT FOR ${decodeURIComponent(keyword)}...`} />
         <AnimeList api={searchAnime} />
       </section>
     </>

@@ -6,8 +6,7 @@ import Image from "next/image";
 
 const Page = async ({ params: { id } }) => {
   const anime = await getAnimeResponse(`anime/${id}`);
-  console.log(anime);
-
+  
   return (
     <>
       <div className="max-w-[1100px] mx-auto">
@@ -20,7 +19,6 @@ const Page = async ({ params: { id } }) => {
             alt={anime.data?.images.jpg.image_url}
             width={200}
             height={300}
-            className=""
           />
           <div>
             <h1 className="text-justify">{anime.data?.synopsis || "There is no synopsis."}</h1>

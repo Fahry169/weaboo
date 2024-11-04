@@ -1,4 +1,6 @@
-  import { Browsers, Star } from "@phosphor-icons/react";
+"use client"
+
+import { Browsers, Star } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -8,7 +10,7 @@ const AnimeList = ({ api }) => {
       <div className="grid md:grid-cols-5 sm:grid-cols-3 grid-cols-2 gap-8 px-4 mb-8">
         {api.data?.map((data) => {
           return (
-            <div className="cursor-pointer hover:brightness-75 transition-all">
+            <div key={data.mal_id} className="cursor-pointer hover:brightness-75 transition-all">
               <Link
                 href={`/anime/${data.mal_id}`}
                 className="text-color-1 hover:text-black"
@@ -17,6 +19,7 @@ const AnimeList = ({ api }) => {
                   <Image
                     src={data.images.webp.image_url}
                     alt={`${data.title} Cover`}
+                    priority
                     fill
                     sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 20vw"
                     className="object-cover rounded"
