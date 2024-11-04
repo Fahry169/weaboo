@@ -23,7 +23,7 @@ const Page = async ({ params: { id } }) => {
             className=""
           />
           <div>
-            <h1 className="text-justify">{anime.data?.synopsis}</h1>
+            <h1 className="text-justify">{anime.data?.synopsis || "There is no synopsis."}</h1>
           </div>
         </div>
         <YoutubeVideo ytId={anime.data.trailer.youtube_id} />

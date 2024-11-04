@@ -15,7 +15,7 @@ const AnimeList = ({ api }) => {
                 href={`/anime/${data.mal_id}`}
                 className="text-color-1 hover:text-black"
               >
-                <div className="relative aspect-[3/4]">
+                <div className="relative aspect-[2/3]">
                   <Image
                     src={data.images.webp.image_url}
                     alt={`${data.title} Cover`}
@@ -30,16 +30,20 @@ const AnimeList = ({ api }) => {
                 <div className="justify-between flex items-center text-sm pt-1">
                   <div className="flex gap-1 items-center">
                     <Browsers 
-                    size={20}
+                    size={20} 
                     weight="bold"
-                    color="#2b2d42"
+                     color="#2b2d42" 
                      />
-                    <p>{data.episodes || <span className="font-bold">-</span>}
+                    <p>
+                      {data.episodes || <span className="font-bold">-</span>}
                     </p>
                   </div>
                   <div className="flex gap-0.5 items-center">
-                    <Star size={18} 
-                    weight="fill" color="#F3C623" />
+                    <Star 
+                    size={18} 
+                    weight="fill" 
+                    color="#F3C623" 
+                    />
                     <p>{data.score || "-"}</p>
                   </div>
                 </div>
