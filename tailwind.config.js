@@ -11,6 +11,9 @@ module.exports = {
         "navbar": "#2b2d42",
         "color-1": "#647380"
       },
+      fontFamily: {
+        poppins: ['var(--font-poppins)'],
+      }
     },
   },
   plugins: [],
