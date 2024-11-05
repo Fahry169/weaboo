@@ -1,17 +1,16 @@
 import AnimeList from "@/components/AnimeList";
 import Header from "@/components/AnimeList/Header";
-import { getRandomAnime } from "@/service/api-service";
-import { getAnimeResponse } from "@/service/api-service";
+import { getRandomAnime, reproduce } from "@/libs/api-libs";
+import { getAnimeResponse } from "@/libs/api-libs";
 
 const Page = async () => {
   const topAnime = await getAnimeResponse("top/anime", "limit=10");
 
   let animeRandom = await getRandomAnime("recommendations/anime", "entry");
-  animeRandom = { data: animeRandom.slice(0, 8)};
+  animeRandom = reproduce(animeRandom, 5);
 
   return (
     <>
-
       {/* anime terpopuler */}
       <section>
         <Header
@@ -21,8 +20,6 @@ const Page = async () => {
         />
         <AnimeList api={topAnime} />
       </section>
-
-
 
       {/* anime rekomendasi */}
       <section>
