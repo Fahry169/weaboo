@@ -18,14 +18,13 @@ const AnimeList = ({ api }) => {
                 href={`/anime/${data.mal_id}`}
                 className="text-color-1 hover:text-black"
               >
-                <div className="relative w-full">
+                <div className="relative aspect-[2/3] w-full">
                   <Image
                     src={data.images.webp.image_url}
                     alt={`${data.title} Cover`}
-                    priority
-                    width={400}
-                    height={600}
-                    className="object-cover rounded w-full h-auto"
+                    fill
+                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                    className="object-cover rounded"
                   />
                 </div>
                 <h3 className="text-sm font-medium mt-2 line-clamp-1">
