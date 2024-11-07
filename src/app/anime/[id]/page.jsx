@@ -1,5 +1,3 @@
-
-
 import { getAnimeResponse } from "@/libs/api-libs";
 import YoutubeVideo from "@/components/Utilities/YoutubeVideo";
 import Image from "next/image";

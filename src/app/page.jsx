@@ -7,7 +7,7 @@ const Page = async () => {
   const topAnime = await getAnimeResponse("top/anime", "limit=10");
 
   let animeRandom = await getRandomAnime("recommendations/anime", "entry");
-  animeRandom = reproduce(animeRandom, 5);
+  animeRandom = reproduce(animeRandom, 5);  
 
   return (
     <>
@@ -22,10 +22,10 @@ const Page = async () => {
       </section>
 
       {/* anime rekomendasi */}
-      <section>
+      {/* <section>
         <Header title="RANDOM ANIME" />
         <AnimeList api={animeRandom} />
-      </section>
+      </section> */}
     </>
   );
 };
