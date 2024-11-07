@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import InputSearch from "./InputSearch";
+import { UserCircle } from "@phosphor-icons/react";
 
 const Navbar = () => {
   return (
@@ -11,7 +12,10 @@ const Navbar = () => {
           <Link href="/ " className="font-bold text-2xl text-white">
             Weaboo
           </Link>
+          <div className="flex gap-3">
           <InputSearch />
+          <UserCircle size={28} color="white" />
+          </div>
         </div>
       </nav>
     </header>

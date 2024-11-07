@@ -1,6 +1,5 @@
 "use client";
 
-import { Browsers, Star } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -27,21 +26,9 @@ const AnimeList = ({ api }) => {
                     className="object-cover rounded"
                   />
                 </div>
-                <h3 className="text-sm font-medium mt-2 line-clamp-1">
+                <h3 className="text-sm font-medium mt-2">
                   {data.title_english || data.title}
                 </h3>
-                <div className="justify-between flex items-center text-sm pt-1">
-                  <div className="flex gap-1 items-center">
-                    <Browsers size={20} weight="bold" color="#2b2d42" />
-                    <p>
-                      {data.episodes || <span className="font-bold">-</span>}
-                    </p>
-                  </div>
-                  <div className="flex gap-0.5 items-center">
-                    <Star size={18} weight="fill" color="#F3C623" />
-                    <p>{data.score || "-"}</p>
-                  </div>
-                </div>
               </Link>
             </div>
           );
