@@ -29,14 +29,12 @@ const InputSearch = () => {
   const toggleSearch = () => {
     setIsSearchOpen(!isSearchOpen);
     if (!isSearchOpen) {
-      // Beri waktu untuk animasi sebelum focus
       setTimeout(() => {
         searchRef.current?.focus();
       }, 100);
     }
   };
 
-  // Handle click outside to close search
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
