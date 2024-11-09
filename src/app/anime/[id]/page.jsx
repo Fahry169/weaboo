@@ -1,28 +1,177 @@
+"use client";
+
 import { getAnimeResponse } from "@/libs/api-libs";
 import YoutubeVideo from "@/components/Utilities/YoutubeVideo";
 import Image from "next/image";
+import { Star, Calendar, Clock, Play, Tag, Heart } from "lucide-react";
 
 const Page = async ({ params: { id } }) => {
   const anime = await getAnimeResponse(`anime/${id}`);
-  
+
   return (
     <>
-      <div className="max-w-[1100px] mx-auto">
-        <div className="text-3xl font-bold border-b-8 border-navbar py-5">
-          <h1>{anime.data?.title.english || anime.data?.title}</h1>
-        </div>
-        <div className="flex gap-10 py-5 md:flex-nowrap flex-wrap">
+  
+      <div className="relative w-full h-[400px] overflow-hidden">
+        <div className="absolute inset-0">
           <Image
-            src={anime.data?.images.webp.image_url}
-            alt={anime.data?.images.jpg.image_url}
-            width={200}
-            height={300}
+            src={
+              anime.data?.images.webp.large_image_url ||
+              anime.data?.images.webp.image_url
+            }
+            alt="background"
+            fill
+            className="object-cover opacity-20 blur-sm"
           />
-          <div>
-            <h1 className="text-justify">{anime.data?.synopsis || "There is no synopsis."}</h1>
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
+
+        <div className="relative max-w-[1100px] mx-auto h-full flex items-end pb-10">
+          <div className="flex gap-8">
+
+            <div className="relative w-[220px] aspect-[2/3] rounded-lg overflow-hidden shadow-2xl">
+              <Image
+                src={
+                  anime.data?.images.webp.large_image_url ||
+                  anime.data?.images.webp.image_url
+                }
+                alt={anime.data?.title}
+                fill
+                className="object-cover"
+              />
+            </div>
+
+            <div className="text-white">
+              <h1 className="text-4xl font-bold mb-4">
+                {anime.data?.title.english || anime.data?.title}
+              </h1>
+              <div className="flex gap-6 text-sm mb-4">
+                {anime.data?.score && (
+                  <div className="flex items-center gap-2">
+                    <Star className="fill-yellow-400 stroke-yellow-400 w-5 h-5" />
+                    <span>{anime.data.score} / 10</span>
+                  </div>
+                )}
+                {anime.data?.aired?.from && (
+                  <div className="flex items-center gap-2">
+                    <Calendar className="w-5 h-5" />
+                    <span>{new Date(anime.data.aired.from).getFullYear()}</span>
+                  </div>
+                )}
+                {anime.data?.duration && (
+                  <div className="flex items-center gap-2">
+                    <Clock className="w-5 h-5" />
+                    <span>{anime.data.duration}</span>
+                  </div>
+                )}
+                {anime.data?.episodes && (
+                  <div className="flex items-center gap-2">
+                    <Play className="w-5 h-5" />
+                    <span>{anime.data.episodes} Episodes</span>
+                  </div>
+                )}
+              </div>
+
+              {/* Genres */}
+              <div className="flex flex-wrap gap-2">
+                {anime.data?.genres?.map((genre) => (
+                  <span
+                    key={genre.mal_id}
+                    className="px-3 py-1 bg-white/20 rounded-full text-sm"
+                  >
+                    {genre.name}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
-        <YoutubeVideo ytId={anime.data.trailer.youtube_id} />
+      </div>
+      <div className="max-w-[1100px] mx-auto py-10">
+        <div className="grid md:grid-cols-[1fr_300px] gap-10">
+          <div className="space-y-8">
+
+            <section>
+              <h2 className="text-2xl font-bold mb-4">Synopsis</h2>
+              <p className="text-gray-700 leading-relaxed">
+                {anime.data?.synopsis || "No synopsis available."}
+              </p>
+            </section>
+
+            {anime.data?.trailer?.youtube_id && (
+              <section>
+                <h2 className="text-2xl font-bold mb-4">Trailer</h2>
+                <div className="rounded-lg overflow-hidden">
+                  <YoutubeVideo ytId={anime.data.trailer.youtube_id} />
+                </div>
+              </section>
+            )}
+          </div>
+
+          <div className="space-y-6">
+            {/* Statistics */}
+            <div className="bg-gray-50 rounded-lg p-6 space-y-4">
+              <h3 className="font-bold text-lg">Information</h3>
+
+              <div className="space-y-3">
+                {anime.data?.status && (
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Status</span>
+                    <span className="font-medium">{anime.data.status}</span>
+                  </div>
+                )}
+
+                {anime.data?.rating && (
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Rating</span>
+                    <span className="font-medium">{anime.data.rating}</span>
+                  </div>
+                )}
+
+                {anime.data?.season && (
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Season</span>
+                    <span className="font-medium capitalize">
+                      {anime.data.season} {anime.data.year}
+                    </span>
+                  </div>
+                )}
+
+                {anime.data?.studios?.length > 0 && (
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Studio</span>
+                    <span className="font-medium">
+                      {anime.data.studios[0].name}
+                    </span>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {(anime.data?.rank || anime.data?.popularity) && (
+              <div className="bg-gray-50 rounded-lg p-6 space-y-4">
+                <h3 className="font-bold text-lg">Rankings</h3>
+                <div className="grid grid-cols-2 gap-4">
+                  {anime.data?.rank && (
+                    <div className="text-center p-4 bg-white rounded-lg">
+                      <div className="text-2xl font-bold text-blue-500">
+                        #{anime.data.rank}
+                      </div>
+                      <div className="text-sm text-gray-600">Ranked</div>
+                    </div>
+                  )}
+                  {anime.data?.popularity && (
+                    <div className="text-center p-4 bg-white rounded-lg">
+                      <div className="text-2xl font-bold text-pink-500">
+                        #{anime.data.popularity}
+                      </div>
+                      <div className="text-sm text-gray-600">Popularity</div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </>
   );

@@ -44,7 +44,7 @@ const InputSearch = () => {
       ) {
         setIsSearchOpen(false);
       }
-    };
+    };  
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
@@ -68,7 +68,7 @@ const InputSearch = () => {
             className="ml-2 p-1 hover:bg-gray-200 rounded-full transition-colors"
             onClick={() => setIsSearchOpen(false)}
           >
-            <X size={22} />
+            <X size={22} color="white"/>
           </button>
         </div>
       ) : (

@@ -6,11 +6,24 @@ import { getAnimeResponse } from "@/libs/api-libs";
 const Page = async () => {
   const topAnime = await getAnimeResponse("top/anime", "limit=10");
 
+  const newAnime = await getAnimeResponse("seasons/upcoming", "limit=10");
+  console;
+
   let animeRandom = await getRandomAnime("recommendations/anime", "entry");
-  animeRandom = reproduce(animeRandom, 5);  
+  animeRandom = reproduce(animeRandom, 5);
 
   return (
     <>
+      
+      <section>
+        <Header
+          title="UPCOMING NEXT SEASON"
+          TitleLink="View All"
+          HrefLink="/upcoming-anime"
+        />
+        <AnimeList api={newAnime} />
+      </section>
+
       {/* anime terpopuler */}
       <section>
         <Header

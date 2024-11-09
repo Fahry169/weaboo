@@ -8,8 +8,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "navbar": "#2b2d42",
-        "color-1": "#647380"
+        "navbar": "#27374D",
+        "color-1": "#485164"
       },
       fontFamily: {
         poppins: ['var(--font-poppins)'],
