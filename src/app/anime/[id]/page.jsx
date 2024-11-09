@@ -3,7 +3,8 @@
 import { getAnimeResponse } from "@/libs/api-libs";
 import YoutubeVideo from "@/components/Utilities/YoutubeVideo";
 import Image from "next/image";
-import { Star, Calendar, Clock, Play, Tag, Heart } from "lucide-react";
+import { Calendar, Clock, Play, Star } from "@phosphor-icons/react";
+
 
 const Page = async ({ params: { id } }) => {
   const anime = await getAnimeResponse(`anime/${id}`);
