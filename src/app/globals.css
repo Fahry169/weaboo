@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 .loader {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   background: radial-gradient(farthest-side, #ffffff 94%, #0000) top/16px 16px
       no-repeat,
