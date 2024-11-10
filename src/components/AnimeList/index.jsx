@@ -62,7 +62,7 @@ const AnimeList = ({ api }) => {
 
                     </div>
                   </div>
-                  <h3 className="text-sm font-medium mt-2 line-clamp-2 text-color-1 group-hover:text-black transition-colors py-1">
+                  <h3 className="text-sm font-medium mt-2 line-clamp-2 text-white group-hover:text-color-2 transition-colors transition-all duration-200 py-1">
                     {data.title_english || data.title}
                   </h3>
                 </div>

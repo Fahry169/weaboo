@@ -5,30 +5,24 @@ import YoutubeVideo from "@/components/Utilities/YoutubeVideo";
 import Image from "next/image";
 import { Calendar, Clock, Play, Star } from "@phosphor-icons/react";
 
-
 const Page = async ({ params: { id } }) => {
   const anime = await getAnimeResponse(`anime/${id}`);
 
   return (
     <>
-  
       <div className="relative w-full h-[400px] overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src={
-              anime.data?.images.webp.large_image_url ||
-              anime.data?.images.webp.image_url
-            }
+            src={anime.data?.images.webp.large_image_url}
             alt="background"
             fill
             className="object-cover opacity-20 blur-sm"
           />
+          <div className="absolute bottom-0 left-0 right-0 h-[30%] bg-gradient-to-t from-black to-transparent"/>
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
 
         <div className="relative max-w-[1100px] mx-auto h-full flex items-end pb-10">
           <div className="flex gap-8">
-
             <div className="relative w-[220px] aspect-[2/3] rounded-lg overflow-hidden shadow-2xl">
               <Image
                 src={
@@ -72,7 +66,6 @@ const Page = async ({ params: { id } }) => {
                 )}
               </div>
 
-              {/* Genres */}
               <div className="flex flex-wrap gap-2">
                 {anime.data?.genres?.map((genre) => (
                   <span
@@ -90,10 +83,9 @@ const Page = async ({ params: { id } }) => {
       <div className="max-w-[1100px] mx-auto py-10">
         <div className="grid md:grid-cols-[1fr_300px] gap-10">
           <div className="space-y-8">
-
             <section>
-              <h2 className="text-2xl font-bold mb-4">Synopsis</h2>
-              <p className="text-gray-700 leading-relaxed">
+              <h2 className="text-2xl font-bold text-white mb-4">Synopsis</h2>
+              <p className="text-white text-justify leading-relaxed">
                 {anime.data?.synopsis || "No synopsis available."}
               </p>
             </section>
@@ -109,10 +101,8 @@ const Page = async ({ params: { id } }) => {
           </div>
 
           <div className="space-y-6">
-            {/* Statistics */}
             <div className="bg-gray-50 rounded-lg p-6 space-y-4">
               <h3 className="font-bold text-lg">Information</h3>
-
               <div className="space-y-3">
                 {anime.data?.status && (
                   <div className="flex justify-between">
@@ -124,7 +114,7 @@ const Page = async ({ params: { id } }) => {
                 {anime.data?.rating && (
                   <div className="flex justify-between">
                     <span className="text-gray-600">Rating</span>
-                    <span className="font-medium">{anime.data.rating}</span>
+                    <span className="font-medium">-</span>
                   </div>
                 )}
 
