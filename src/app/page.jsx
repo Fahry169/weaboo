@@ -1,5 +1,5 @@
 import AnimeList from "@/components/AnimeList";
-import TopAnime from "@/components/TopAnime";
+// import TopAnime from "@/components/TopAnime";
 import Header from "@/components/Utilities/Header";
 import { getRandomAnime, reproduce } from "@/libs/api-libs";
 import { getAnimeResponse } from "@/libs/api-libs";
