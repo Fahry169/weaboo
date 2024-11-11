@@ -1,14 +1,17 @@
 import Link from "next/link";
 
-const Header = ({ title, HrefLink, TitleLink }) => {
+const Header = ({ title, HrefLink, TitleLink, desc }) => {
   return (
     <div className="max-w-[1100px] mx-auto px-4">
       <div className="flex justify-between items-center py-4">
-        <h1 className="text-lg font-semibold text-white">{title}</h1>
+        <div>
+          <h1 className="text-xl font-semibold text-white pb-1">{title}</h1>
+          <h3 className="text-color-2 text-sm">{desc}</h3>
+        </div>
         {HrefLink && TitleLink ? (
           <Link
             href={HrefLink}
-            className="text-sm font-medium text-white hover:text-color-1"
+            className="text-sm font-medium text-color-2 hover:text-white"
           >
             {TitleLink}
           </Link>
@@ -18,4 +21,4 @@ const Header = ({ title, HrefLink, TitleLink }) => {
   );
 };
 
-export default Header
+export default Header;
