@@ -11,9 +11,9 @@ const Navbar = () => {
         <Link href="/ " className="font-semibold text-2xl text-white">
           Weaboo
         </Link>
-        <div className="flex gap-3">
+        <div className="flex gap-3 items-center">
           <InputSearch />
-          <UserCircle size={28} color="white" />
+          <UserCircle size={25} color="white" />
         </div>
       </div>
     </header>

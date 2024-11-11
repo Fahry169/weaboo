@@ -1,20 +1,29 @@
 import AnimeList from "@/components/AnimeList";
 // import TopAnime from "@/components/TopAnime";
 import Header from "@/components/Utilities/Header";
-import { getRandomAnime, reproduce } from "@/libs/api-libs";
+// import { getRandomAnime, reproduce } from "@/libs/api-libs";
 import { getAnimeResponse } from "@/libs/api-libs";
 
 const Page = async () => {
+  const airingAnime = await getAnimeResponse("seasons/now", "limit=10");
+  const newAnime = await getAnimeResponse("seasons/upcoming", "limit=10");
   const topAnime = await getAnimeResponse("top/anime", "limit=10");
 
-  const newAnime = await getAnimeResponse("seasons/upcoming", "limit=10");
-  console;
-
-  let animeRandom = await getRandomAnime("recommendations/anime", "entry");
-  animeRandom = reproduce(animeRandom, 5);
+  // let animeRandom = await getRandomAnime("recommendations/anime", "entry");
+  // animeRandom = reproduce(animeRandom, 5);
 
   return (
     <>
+      <section>
+        <Header
+          title="Airing Anime"
+          desc="Dive into the latest episodes of anime currently on air!"
+          TitleLink="View All"
+          HrefLink="/airing-anime"
+        />
+        <AnimeList api={airingAnime} />
+      </section>
+
       <section>
         <Header
           title="Upcoming New Anime"
@@ -26,13 +35,14 @@ const Page = async () => {
       </section>
 
       {/* <section>
-        <TopAnime
-        api={topAnime.data}
-        title="Highest Rating Anime"
+        <Header
+          title="Highest Anime Rating"
+          desc="High"
+          TitleLink="View All"
+          HrefLink="/populer"
         />
-        ti
+        <TopAnime api={topAnime.data} />
       </section> */}
-      
 
       {/* anime rekomendasi */}
       {/* <section>

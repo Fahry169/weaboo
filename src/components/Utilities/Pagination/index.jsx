@@ -28,7 +28,7 @@ const Pagination = ({ page, lastPage, setPage }) => {
   };
 
   return (
-    <div className="text-black text-2xl flex justify-center items-center gap-4 py-8">
+    <div className="text-white text-2xl flex justify-center items-center gap-4 py-8">
       <button
         onClick={handlerFirst}
         className="hover:text-color-1 transition-all text-lg flex items-center"
