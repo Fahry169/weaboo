@@ -1,12 +1,29 @@
 "use client";
 
 import { getAnimeResponse } from "@/libs/api-libs";
-import YoutubeVideo from "@/components/Utilities/YoutubeVideo";
+import YoutubeVideo from "@/components/Utilities/VideoPlayer";
 import Image from "next/image";
 import { Calendar, Clock, Play, Star } from "@phosphor-icons/react";
+import { useEffect, useState } from "react";
 
-const Page = async ({ params: { id } }) => {
-  const anime = await getAnimeResponse(`anime/${id}`);
+const Page = ({ params: { id } }) => {
+  const [anime, setAnime] = useState([]);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
+
+  const fetchData = async () => {
+    const animeAPI = await getAnimeResponse(`anime/${id}`);
+    setAnime(animeAPI);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -18,7 +35,7 @@ const Page = async ({ params: { id } }) => {
             fill
             className="object-cover opacity-20 blur-sm"
           />
-          <div className="absolute bottom-0 left-0 right-0 h-[30%] bg-gradient-to-t from-black to-transparent"/>
+          <div className="absolute bottom-0 left-0 right-0 h-[30%] bg-gradient-to-t from-black to-transparent" />
         </div>
 
         <div className="relative max-w-[1100px] mx-auto h-full flex items-end pb-10">
@@ -39,28 +56,28 @@ const Page = async ({ params: { id } }) => {
               <h1 className="text-4xl font-bold mb-4">
                 {anime.data?.title.english || anime.data?.title}
               </h1>
-              <div className="flex gap-6 text-sm mb-4">
+              <div className="flex gap-6 text-sm mb-4 ">
                 {anime.data?.score && (
                   <div className="flex items-center gap-2">
-                    <Star className="fill-yellow-400 stroke-yellow-400 w-5 h-5" />
+                    <Star size={20} weight="fill" color="orange" />
                     <span>{anime.data.score} / 10</span>
                   </div>
                 )}
                 {anime.data?.aired?.from && (
                   <div className="flex items-center gap-2">
-                    <Calendar className="w-5 h-5" />
+                    <Calendar size={21} />
                     <span>{new Date(anime.data.aired.from).getFullYear()}</span>
                   </div>
                 )}
                 {anime.data?.duration && (
                   <div className="flex items-center gap-2">
-                    <Clock className="w-5 h-5" />
+                    <Clock size={22} />
                     <span>{anime.data.duration}</span>
                   </div>
                 )}
                 {anime.data?.episodes && (
                   <div className="flex items-center gap-2">
-                    <Play className="w-5 h-5" />
+                    <Play size={18} />
                     <span>{anime.data.episodes} Episodes</span>
                   </div>
                 )}
