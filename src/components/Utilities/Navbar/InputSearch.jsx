@@ -58,7 +58,7 @@ const InputSearch = () => {
         <div className="flex items-center animate-fadeIn">
           <input
             placeholder="Cari Anime...."
-            className="placeholder:text-black p-1 cursor-pointer rounded md:w-64 w-full 
+            className="placeholder:text-black p-1 cursor-pointer text-black  rounded md:w-64 w-full 
                      transition-all duration-300 ease-in-out"
             ref={searchRef}
             onKeyDown={handleSearch}
