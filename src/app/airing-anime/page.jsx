@@ -1,5 +1,3 @@
-"use client";
-
 import AnimeList from "@/components/AnimeList";
 import HeaderMenu from "@/components/Utilities/HeaderMenu";
 import { getAnimeResponse } from "@/libs/api-libs";

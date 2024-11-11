@@ -6,8 +6,17 @@ import Image from "next/image";
 import { Calendar, Clock, Play, Star } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
 
+const Loading = () => {
+  return (
+    <div className="flex justify-center items-center min-h-screen">
+      <div className="flex justify-center items-center loader"></div>
+    </div>
+  );
+};
+
 const Page = ({ params: { id } }) => {
-  const [anime, setAnime] = useState([]);
+  const [anime, setAnime] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     window.scrollTo({
@@ -17,44 +26,61 @@ const Page = ({ params: { id } }) => {
   }, []);
 
   const fetchData = async () => {
-    const animeAPI = await getAnimeResponse(`anime/${id}`);
-    setAnime(animeAPI);
+    try {
+      const animeAPI = await getAnimeResponse(`anime/${id}`);
+      setAnime(animeAPI);
+    } catch (error) {
+      console.error("Error fetching anime:", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [id]);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  if (!anime?.data) {
+    return <Loading />;
+  }
 
   return (
     <>
       <div className="relative w-full h-[400px] overflow-hidden">
         <div className="absolute inset-0">
-          <Image
-            src={anime.data?.images.webp.large_image_url}
-            alt="background"
-            fill
-            className="object-cover opacity-20 blur-sm"
-          />
+          {anime.data?.images?.webp?.large_image_url && (
+            <Image
+              src={anime.data.images.webp.large_image_url}
+              alt={anime.data?.title || "Anime background"}
+              fill
+              className="object-cover opacity-20 blur-sm"
+              priority
+            />
+          )}
           <div className="absolute bottom-0 left-0 right-0 h-[30%] bg-gradient-to-t from-black to-transparent" />
         </div>
 
         <div className="relative max-w-[1100px] mx-auto h-full flex items-end pb-10">
           <div className="flex gap-8">
             <div className="relative w-[220px] aspect-[2/3] rounded-lg overflow-hidden shadow-2xl">
-              <Image
-                src={
-                  anime.data?.images.webp.large_image_url ||
-                  anime.data?.images.webp.image_url
-                }
-                alt={anime.data?.title}
-                fill
-                className="object-cover"
-              />
+              {anime.data?.images?.webp?.large_image_url && (
+                <Image
+                  src={anime.data.images.webp.large_image_url}
+                  alt={anime.data?.title || "Anime cover"}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              )}
             </div>
 
             <div className="text-white">
               <h1 className="text-4xl font-bold mb-4">
-                {anime.data?.title.english || anime.data?.title}
+                {anime.data?.title?.english || anime.data?.title || "Unknown Title"}
               </h1>
               <div className="flex gap-6 text-sm mb-4 ">
                 {anime.data?.score && (
@@ -97,6 +123,7 @@ const Page = ({ params: { id } }) => {
           </div>
         </div>
       </div>
+
       <div className="max-w-[1100px] mx-auto py-10">
         <div className="grid md:grid-cols-[1fr_300px] gap-10">
           <div className="space-y-8">
@@ -131,7 +158,7 @@ const Page = ({ params: { id } }) => {
                 {anime.data?.rating && (
                   <div className="flex justify-between">
                     <span className="text-gray-600">Rating</span>
-                    <span className="font-medium">-</span>
+                    <span className="font-medium">{anime.data.rating}</span>
                   </div>
                 )}
 
