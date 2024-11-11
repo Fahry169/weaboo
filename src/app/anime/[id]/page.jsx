@@ -80,7 +80,9 @@ const Page = ({ params: { id } }) => {
 
             <div className="text-white">
               <h1 className="text-4xl font-bold mb-4">
-                {anime.data?.title?.english || anime.data?.title || "Unknown Title"}
+                {anime.data?.title?.english ||
+                  anime.data?.title ||
+                  "Unknown Title"}
               </h1>
               <div className="flex gap-6 text-sm mb-4 ">
                 {anime.data?.score && (
