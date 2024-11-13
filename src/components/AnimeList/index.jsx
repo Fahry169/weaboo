@@ -1,5 +1,6 @@
-"use client";
+"use client"
 
+import React from "react";
 import { Star } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,9 +9,9 @@ const AnimeList = ({ api }) => {
   return (
     <div className="max-w-[1100px] mx-auto">
       <div className="grid md:grid-cols-5 sm:grid-cols-3 grid-cols-2 gap-8 px-4 mb-8">
-        {api.data?.map((data) => {
+        {api.data?.map((data, animeIndex) => {
           return (
-            <div key={data.mal_id}>
+            <div key={`${data.mal_id}-${animeIndex}`}>
               <Link href={`/anime/${data.mal_id}`}>
                 <div className="relative group">
                   <div className="relative aspect-[2/3] w-full">
@@ -40,9 +41,9 @@ const AnimeList = ({ api }) => {
                       <div>
                         <p className="text-xs text-color-2">Genre</p>
                         <div className="flex flex-wrap gap-2 mt-1.5">
-                          {data.genres?.slice(0, 4).map((genre) => (
+                          {data.genres?.slice(0, 4).map((genre, genreIndex) => (
                             <div
-                              key={genre.mal_id}
+                              key={`${data.mal_id}-${genre.mal_id}-${animeIndex}-${genreIndex}`}
                               className="bg-color-1 text-white px-2 py-1 rounded text-xs"
                             >
                               {genre.name.toLowerCase()}
