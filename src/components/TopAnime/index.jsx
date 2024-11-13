@@ -2,10 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-const TopAnime = ({ api }) => {
-
-  console.log(api);
-  
+const TopAnime = ({ api }) => {  
   return (
     <div className="max-w-[1100px] mx-auto px-4">
       <div className="space-y-4">
