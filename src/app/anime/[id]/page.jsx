@@ -12,6 +12,7 @@ const Loading = () => {
       <div className="flex justify-center items-center loader"></div>
     </div>
   );
+  
 };
 
 const Page = ({ params: { id } }) => {

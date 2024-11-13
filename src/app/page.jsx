@@ -1,5 +1,5 @@
 import AnimeList from "@/components/AnimeList";
-// import TopAnime from "@/components/TopAnime";
+import TopAnime from "@/components/TopAnime";
 import Header from "@/components/Utilities/Header";
 // import { getRandomAnime, reproduce } from "@/libs/api-libs";
 import { getAnimeResponse } from "@/libs/api-libs";
@@ -34,15 +34,15 @@ const Page = async () => {
         <AnimeList api={newAnime} />
       </section>
 
-      {/* <section>
+      <section>
         <Header
           title="Highest Anime Rating"
-          desc="High"
+          desc="Discover the top-rated anime at the time!"
           TitleLink="View All"
           HrefLink="/populer"
         />
         <TopAnime api={topAnime.data} />
-      </section> */}
+      </section>
 
       {/* anime rekomendasi */}
       {/* <section>
