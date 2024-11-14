@@ -17,24 +17,8 @@ const Pagination = ({ page, lastPage, setPage }) => {
     }
   };
 
-  const handlerFirst = () => {
-    setPage(1);
-    scrollTop();
-  };
-
-  const handlerLast = () => {
-    setPage(lastPage);
-    scrollTop();
-  };
-
   return (
     <div className="text-white text-2xl flex justify-center items-center gap-4 py-8">
-      <button
-        onClick={handlerFirst}
-        className="hover:text-color-1 transition-all text-lg flex items-center"
-      >
-        First Page
-      </button>
       <button
         onClick={handlerPrev}
         className="hover:text-color-1 transition-all"
@@ -50,12 +34,6 @@ const Pagination = ({ page, lastPage, setPage }) => {
         className="hover:text-color-1 transition-all"
       >
         Next
-      </button>
-      <button
-        onClick={handlerLast}
-        className="hover:text-color-1 transition-all text-lg"
-      >
-        Last Page
       </button>
     </div>
   );

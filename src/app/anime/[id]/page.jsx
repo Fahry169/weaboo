@@ -5,19 +5,11 @@ import YoutubeVideo from "@/components/Utilities/VideoPlayer";
 import Image from "next/image";
 import { Calendar, Clock, Play, Star } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
-
-const Loading = () => {
-  return (
-    <div className="flex justify-center items-center min-h-screen">
-      <div className="flex justify-center items-center loader"></div>
-    </div>
-  );
-  
-};
+import Loading from "@/app/loading";
 
 const Page = ({ params: { id } }) => {
-  const [anime, setAnime] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [anime, setAnime] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     window.scrollTo({
@@ -26,18 +18,17 @@ const Page = ({ params: { id } }) => {
     });
   }, []);
 
-  const fetchData = async () => {
-    try {
-      const animeAPI = await getAnimeResponse(`anime/${id}`);
-      setAnime(animeAPI);
-    } catch (error) {
-      console.error("Error fetching anime:", error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const animeAPI = await getAnimeResponse(`anime/${id}`);
+        setAnime(animeAPI);
+      } catch (error) {
+        console.error("Error fetching anime:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
     fetchData();
   }, [id]);
 

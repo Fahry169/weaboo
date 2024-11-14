@@ -10,24 +10,25 @@ const Page = () => {
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
 
-  const fetchData = async () => {
-    const populerAnime = await getAnimeResponse("top/anime", `page=${page}`);
-    setData(populerAnime);
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      const populerAnime = await getAnimeResponse("top/anime", `page=${page}`);
+      setData(populerAnime);
+    };
     fetchData();
   }, [page]);
 
   return (
     <>
-      <HeaderMenu title={`Populer Anime #${page}`} />
-      <AnimeList api={data} />
-      <Pagination
-        page={page}
-        lastPage={data.pagination?.last_visible_page}
-        setPage={setPage}
-      />
+      <div>
+        <HeaderMenu title={`Populer Anime #${page}`} />
+        <AnimeList api={data} />
+        <Pagination
+          page={page}
+          lastPage={data.pagination?.last_visible_page}
+          setPage={setPage}
+        />
+      </div>
     </>
   );
 };
