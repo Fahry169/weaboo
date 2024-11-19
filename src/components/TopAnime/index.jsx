@@ -2,7 +2,8 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-const TopAnime = ({ api }) => {  
+const TopAnime = ({ api }) => {
+  
   return (
     <div className="max-w-[1100px] mx-auto px-4">
       <div className="space-y-4">
@@ -23,29 +24,40 @@ const TopAnime = ({ api }) => {
                   />
                 </div>
               </Link>
-              <div className="flex">
-                <div className="ml-4">
+              <div className="flex flex-row w-full ">
+                <div className="ml-4 basis-1/2">
                   <Link
                     href={`/anime/${anime.mal_id}`}
                     className="text-white hover:text-gray-300"
                   >
-                    <h3 className="font-medium text-base">{anime.title}</h3>
+                    <h3 className="font-medium text-sm">{anime.title}</h3>
                   </Link>
 
                   <div className="flex flex-wrap gap-2 my-2">
                     {anime.genres?.map((genre) => (
                       <span
                         key={genre.name}
-                        className="px-3 py-1 rounded-full text-xs text-white bg-blue-900"
+                        className="px-2 py-0.5 rounded-full text-xs text-white bg-blue-900"
                       >
                         {genre.name.toLowerCase()}
                       </span>
                     ))}
                   </div>
                 </div>
-                {/* <div className="flex items-center ">
-                  <p>halo</p>
-                </div> */}
+                <div className="flex text-white mr-10 basis-1/2 justify-around text-center items-center gap-10">
+                  <div className="space-y-1">
+                    <p className="text-color-2 text-sm">Status</p>
+                    <p className="text-sm">{anime.status}</p>
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-color-2 text-sm">{anime.type}</p>
+                    <p className="text-sm">{anime.episodes} eps</p>
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-color-2 text-sm">Rating</p>
+                    <p className="text-sm">{anime.score}</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
