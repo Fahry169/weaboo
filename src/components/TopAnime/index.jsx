@@ -1,13 +1,11 @@
-import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
 const TopAnime = ({ api }) => {
-  
   return (
     <div className="max-w-[1100px] mx-auto px-4">
       <div className="space-y-4">
-        {api.map((anime, index) => (
+        {api.data?.map((anime, index) => (
           <div key={anime.mal_id} className="flex items-center gap-4">
             <span className="text-white text-2xl font-semibold w-10 text-right">
               #{index + 1}
