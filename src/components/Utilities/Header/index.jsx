@@ -4,8 +4,8 @@ const Header = ({ title, HrefLink, TitleLink, desc }) => {
   return (
     <div className="max-w-[1100px] mx-auto px-4">
       <div className="flex items-center justify-between py-4 space-x-4">
-        <div className="flex-grow">
-          <h1 className="text-xl font-semibold text-white">{title}</h1>
+        <div>
+          <h1 className="text-xl font-semibold text-white mb-1">{title}</h1>
           <h3 className="text-color-2 text-sm">{desc}</h3>
         </div>
         {HrefLink && TitleLink ? (
