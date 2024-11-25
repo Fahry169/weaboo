@@ -16,7 +16,7 @@ const Banner = () => {
 
   const logoImages = [
     "logo_op.png",
-    "logo_narutoo.png",
+    "logo_naruto.png",
     "logo_bleach.png",
   ];
 
