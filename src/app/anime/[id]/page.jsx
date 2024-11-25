@@ -127,52 +127,13 @@ const Page = ({ params: { id } }) => {
                 {anime.data?.synopsis || "No synopsis available."}
               </p>
             </section>
-
-            {anime.data?.trailer?.youtube_id && (
-              <section>
-                <h2 className="text-2xl font-bold mb-4">Trailer</h2>
-                <div className="rounded-lg overflow-hidden">
-                  <YoutubeVideo ytId={anime.data.trailer.youtube_id} />
-                </div>
-              </section>
-            )}
           </div>
 
           <div className="space-y-6">
             <div className="bg-gray-50 rounded-lg p-6 space-y-4">
-              <h3 className="font-bold text-lg">Information</h3>
-              <div className="space-y-3">
-                {anime.data?.status && (
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Status</span>
-                    <span className="font-medium">{anime.data.status}</span>
-                  </div>
-                )}
-
-                {anime.data?.rating && (
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Rating</span>
-                    <span className="font-medium">{anime.data.rating}</span>
-                  </div>
-                )}
-
-                {anime.data?.season && (
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Season</span>
-                    <span className="font-medium capitalize">
-                      {anime.data.season} {anime.data.year}
-                    </span>
-                  </div>
-                )}
-
-                {anime.data?.studios?.length > 0 && (
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Studio</span>
-                    <span className="font-medium">
-                      {anime.data.studios[0].name}
-                    </span>
-                  </div>
-                )}
+              <h3 className="font-semibold text-lg">Trailer</h3>
+              <div className="rounded-lg">
+                <YoutubeVideo ytId={anime.data.trailer.youtube_id} />
               </div>
             </div>
 
