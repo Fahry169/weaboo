@@ -1,4 +1,4 @@
-import { getAnimeResponse } from "@/libs/api-libs";
+import { getAnimeResponse } from "@/app/libs/api-libs";
 import AnimeList from "@/components/AnimeList";
 import Header from "@/components/Utilities/Header";
 
@@ -6,6 +6,7 @@ const Page = async ({ params }) => {
   const { keyword } = params;
 
   const searchAnime = await getAnimeResponse("anime", `q=${keyword}`);
+console.log(searchAnime);
 
   return (
     <>

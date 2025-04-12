@@ -1,3 +1,5 @@
+import bannerData from "./json/bannerAPI.json";
+
 export const getAnimeResponse = async (resource, query) => {
   try {
     const res = await fetch(
@@ -11,6 +13,14 @@ export const getAnimeResponse = async (resource, query) => {
     return null;
   }
 };
+
+export const getBannerResponse = () => {
+  return bannerData
+}
+
+
+
+
 
 // export const getRandomAnime = async (resource, objectProperty) => {
 //   try {

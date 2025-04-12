@@ -1,6 +1,6 @@
 "use client";
 
-import { getAnimeResponse } from "@/libs/api-libs";
+import { getAnimeResponse } from "@/app/libs/api-libs";
 import YoutubeVideo from "@/components/Utilities/VideoPlayer";
 import Image from "next/image";
 import { Calendar, Clock, Play, Star } from "@phosphor-icons/react";

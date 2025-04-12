@@ -1,0 +1,34 @@
+{
+  "banner": [
+    {
+      "malID": 21,
+      "title": "One Piece",
+      "genre": "Action, Adventure, Fantasy",
+      "rating": "PG-13 (Teens 13 or older)",
+      "score": 7.71,
+      "release": "Fall 2012",
+      "image": "https://drive.google.com/uc?id=10gn6fILRy6TOi_GH7f1jZYI-7AknfNKi",
+      "logo": "https://drive.google.com/uc?export=view&id=1Ua1PtxBZaJUowf24HXMCqqybBsDFf31h"
+    },
+    {
+      "malID": 20,
+      "title": "Naruto",
+      "genre": "Action, Adventure, Fantasy",
+      "rating": "PG-13 (Teens 13 or older)",
+      "score": 8.01,
+      "release": "Fall 2002",
+      "image": "https://cdn.myanimelist.net/images/anime/1141/142503.jpg",
+      "logo": "https://cdn.myanimelist.net/images/anime/1141/142503l.jpg"
+    },
+    {
+      "malID": 269,
+      "title": "Bleach",
+      "genre": "Action, Adventure, Supernatural",
+      "rating": "PG-13 (Teens 13 or older)",
+      "score": 7.97,
+      "release": "Fall 2004",
+      "image": "https://cdn.myanimelist.net/images/anime/1541/147774.jpg",
+      "logo": "https://cdn.myanimelist.net/images/anime/1541/147774l.jpg"
+    }
+  ]
+}

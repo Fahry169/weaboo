@@ -4,7 +4,7 @@ import AnimeList from "@/components/AnimeList";
 import { useEffect, useState } from "react";
 import HeaderMenu from "@/components/Utilities/HeaderMenu";
 import Pagination from "@/components/Utilities/Pagination";
-import { getAnimeResponse } from "@/libs/api-libs";
+import { getAnimeResponse } from "@/app/libs/api-libs";
 
 const Page = () => {
   const [page, setPage] = useState(1);
@@ -31,6 +31,6 @@ const Page = () => {
       </div>
     </>
   );
-};
+};      
 
 export default Page;

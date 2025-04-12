@@ -2,7 +2,7 @@
 
 import AnimeList from "@/components/AnimeList";
 import HeaderMenu from "@/components/Utilities/HeaderMenu";
-import { getAnimeResponse } from "@/libs/api-libs";
+import { getAnimeResponse } from "@/app/libs/api-libs";
 import { useEffect, useState } from "react";
 import Loading from "@/app/loading";
 
@@ -14,11 +14,14 @@ const Page = () => {
     const fetchData = async () => {
       setIsLoading(true);
       const api = await getAnimeResponse("seasons/now", { cache: "no-store" });
+      
       setAiringAnime(api);
       setIsLoading(false);
     };
     fetchData();
   }, []);
+
+
 
   return (
     <>

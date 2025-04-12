@@ -13,6 +13,7 @@ const InputSearch = () => {
 
     if (e.key === "Enter" || e.type === "click") {
       e.preventDefault();
+      
       router.push(`/search/${inputValue}`);
       setIsSearchOpen(false);
     }

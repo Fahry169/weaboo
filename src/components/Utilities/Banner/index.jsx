@@ -4,9 +4,11 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "@phosphor-icons/react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { getBannerResponse } from "@/app/libs/api-libs.js";
 
 const Banner = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [bannerAPI, setBannerAPI] = useState([]);
 
   const bannerImages = [
     "banner_op.png",
@@ -14,11 +16,15 @@ const Banner = () => {
     "banner_bleach.png",
   ];
 
-  const logoImages = [
-    "logo_op.png",
-    "logo_naruto.png",
-    "logo_bleach.png",
-  ];
+  const logoImages = ["logo_op.png", "logo_naruto.png", "logo_bleach.png"];
+
+  useEffect(() => {
+    const getBannerData = async () => {
+      const data = await getBannerResponse();
+      setBannerAPI(data);
+    };
+    getBannerData();
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -59,14 +65,22 @@ const Banner = () => {
         </button>
       </div>
       <div className="absolute left-10 md:left-16 lg:left-24 transition-all duration-500 ease-in-out top-1/2 -translate-y-1/2 md:translate-y-0">
-      <Image
-                unoptimized={false}
-                src={`/logo/${logoImages[currentIndex]}`}
-                alt={"test"}
-                width={500}
-                height={180}
-                className="w-max h-12 md:h-20 lg:h-32 hover:scale-105 transition-all duration-300"
-              />
+        <Link
+          href={
+            bannerAPI.banner && bannerAPI.banner[currentIndex]
+              ? `/anime/${bannerAPI.banner[currentIndex].malID}`
+              : "#"
+          }
+        >
+          <Image
+            unoptimized={false}
+            src={`/logo/${logoImages[currentIndex]}`}
+            alt={"test"}
+            width={500}
+            height={180}
+            className="w-max h-12 md:h-20 lg:h-32 hover:scale-105 transition-all duration-300"
+          />
+        </Link>
       </div>
     </div>
   );
